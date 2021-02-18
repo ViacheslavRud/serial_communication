@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--TODO make it working-->
+<launch>
+    <arg name="nodeName" default="serial_communication" doc=""/>
+    <arg name="inputTopic" default="/serial/input" doc=""/>
+    <arg name="outputTopic" default="/serial/output" doc=""/>
+    <arg name="serialPortName" default="/dev/ttyACM0" doc=""/>
+    <arg name="baudRate" default="9600" doc=""/>
+    <arg name="encoding" default="Ascii" doc=""/>
+
+    <node name="$(arg nodeName)" pkg="serial_communication" type="serial_communication.py" args="$(arg nodeName) $(arg inputTopic) $(arg outputTopic) $(arg serialPortName) $(arg baudRate) $(arg encoding)" />
+</launch>
