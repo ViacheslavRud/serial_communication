@@ -6,8 +6,11 @@ import traceback
 from std_msgs.msg import String
 
 serialPort = serial.Serial()
+serialEncoding = "Ascii"
 
 def main(nodeName, inputTopic, outputTopic, serialPortName, baudRate, encoding):
+    global serialEncoding
+    serialEncoding = encoding
     serialPort.baudrate = baudRate
     serialPort.port = serialPortName
     serialPort.open()
@@ -31,7 +34,7 @@ def main(nodeName, inputTopic, outputTopic, serialPortName, baudRate, encoding):
 
 
 def ProcessToicInput(data):
-    serialPort.write(data.data.encode(encoding))
+    serialPort.write(data.data.encode(serialEncoding))
 
 
 if __name__ == '__main__':
